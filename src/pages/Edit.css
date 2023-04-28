@@ -1,0 +1,61 @@
+
+
+/* Container All */
+.edit-container {
+    width: 100%;
+    height: 100vh;
+    padding: 50px;
+    padding-left: 100px;
+    display: inline-block;
+    /*background: linear-gradient(to right bottom, rgba(175, 128, 48, 0.7), rgba(175, 128, 48, .5));*/
+}
+
+
+
+/* Title Area */
+.edit-title-wrapper{
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.edit-title-right-line {
+    background-color: rgba(40, 40, 39, 0.5);
+    height: 3px;
+    min-width: 30px;
+    width: 70%;
+    margin-left: 20px;
+    margin-top: 3px;
+    z-index: 999;
+}
+
+
+
+
+/* Input Area */
+.edit-wrapper {
+    display: inline-block;
+    width: 100%;
+    height: 70vh;
+}
+
+.edit-first-line-wrapper, 
+.edit-second-line-wrapper, 
+.edit-third-line-wrapper {
+    display: flex;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

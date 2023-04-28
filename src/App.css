@@ -1,38 +1,162 @@
-.App {
-  text-align: center;
+
+/* Global Settings */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+/* 0. Container */
+.container {
+    /*background: linear-gradient(to right bottom, rgba(20, 90, 90, .9), rgba(80, 150, 150, .7));*/
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    overflow: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+/* 0.1 Left Bar Container & 0.1 Main Area Container */
+
+
+
+
+
+
+
+
+
+
+
+/* 0.1 Left Bar */
+/*
+.left-bar {
+    position: left;
+    height: 100vh;
+    background-color: rgba(130, 194, 241, 0.3);
+    box-shadow: 1px 3px 20px rgb(36, 34, 34);
+    border-radius: 0% 2% 2% 0%;
+    margin: 0;
+}
+*/
+
+
+/* 0.2 Main Area */
+/*
+.main-area-wrapper {
+    background-color: transparent;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+*/
+
+/* 0.2.1 app wrapper */
+/*
+.app-wrapper {
+    background-color: #12343b53;
+    min-width: 600px;
+    max-width: 800px;
+    min-height: 500px;
+    padding: 30px;
+    border-radius: 5%;
+    box-shadow: 3px 6px 40px black;
+}
+*/
+
+
+
+
+
+
+/* Header */
+/*
+.header-wrap {
+    width: 100%;
+    display: inline-grid;
+    grid-template-columns: repeat(7, auto);
+    align-items: center;
+}
+.header-wrap > h1 {
+    text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header-buttons {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 0;
+    height: 100%;
+    align-items: flex-end;
+    padding-bottom: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.header-buttons > .export {
+    margin-left: 3px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header-buttons > .import, 
+.header-buttons > .export {
+    width: 90%;
+    height: 70%;
+    border-radius: 5px;
+    background-color: rgba(255, 228, 196, .8);
+    border: 0;
+    font-family: 'arial black';
 }
+
+.header-buttons > .import:hover, 
+.header-buttons > .export:hover {
+    cursor: pointer;
+    background-color: rgba(255, 228, 196, .5);
+} 
+*/
+
+/* Input area */
+/*
+.input-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.input-text {
+    outline: none;
+    width: 260px;
+    padding: 15px;
+    margin-right: 25px;
+    font-size: 20px;
+    border: 3px solid #c89666;
+    border-radius: 10px;
+}
+
+.add-edit-button {
+    width: 70px;
+    padding: 15px 15px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 0;
+    background-color: rgba(241, 175, 113, .8);
+}
+
+.add-edit-button:hover {
+    cursor: pointer;
+    background-color: rgba(241, 175, 113, .5);
+}
+*/
+
+
+/* List area */
+/*
+.lists-wrapper {
+    width: 100%;
+    height: 75%;
+    margin-top: 20px;
+    overflow: auto;
+    display: inline-block;
+}
+*/
