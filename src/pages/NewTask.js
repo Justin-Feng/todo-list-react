@@ -77,6 +77,7 @@ export default function NewTask(newTaskProps) {
                 description: newTaskDescriptionRef.current.value, 
                 project: newTaskProjectRef.current.getValue()[0].label, 
                 duedate: newTaskDueDateRef.current.input.value, 
+                completed: false, 
             }]
         })
         // Clear the inputs

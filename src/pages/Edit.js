@@ -81,6 +81,7 @@ export default function Edit(editProps) {
       todoListCopy[targetIdx].description = EditDescriptionRef.current.value
       todoListCopy[targetIdx].project = EditProjectRef.current.getValue()[0].label
       todoListCopy[targetIdx].duedate = EditDueDateRef.current.input.value
+      todoListCopy[targetIdx].completed = false
 
       editProps.setTodoList((prevList) => {
           return todoListCopy

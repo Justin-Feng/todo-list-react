@@ -14,22 +14,29 @@ import {v4 as uuidv4} from 'uuid'
 
 // Global variables
 const LOCAL_STORAGE_KEY_TODOLIST = 'todoApp.todo'
-const LOCAL_STORAGE_KEY_EDITEDTASK = 'todoApp.editedtask'
 const LOCAL_STORAGE_KEY_PROJECTS = 'todoApp.projects'
+const LOCAL_STORAGE_KEY_EDITEDTASK = 'todoApp.editedtask'
+const LOCAL_STORAGE_KEY_PROJECTNAME = 'todoApp.projectname'
+const LOCAL_STORAGE_KEY_FROMPAGE = 'todoApp.frompage'
 
 
 function App() {
 
-  // States & Refs
-  const [todoList, setTodoList] = useState([]) 
-  // array of objects (todo task object)
+  /* ----- States & Refs ----- */
+  // Todo List, Array of Tasks
+  const [todoList, setTodoList] = useState([]) // array of objects
+  // Array of Project Names
   const [projects, setProjects] = useState([]) // array of strings (project name)
-  // the id of the task to be edited
-  const [editedTask, seteditedTask] = useState({})
+  // The About to be Edited Task
+  const [editedTask, seteditedTask] = useState({}) // object
+  // The Project to be Shown in the Project Page
+  const [projectName, setProjectName] = useState('') // string
+  // From Which Page that Calls the Edit Page
+  const [fromPage, setFromPage] = useState() // string
   
 
   
-  // useEffect to load todo list from local storage
+  /* ----- useEffect to Load Golbal State from Local Storage ----- */
   useEffect(() => {
     // Todo List
     const storedTodoList = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_TODOLIST))
@@ -42,28 +49,38 @@ function App() {
       setProjects((prevlist) => {return [...prevlist, ...storedProjects]})
     }
     // Edited Task
-    const storededitedTask = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_EDITEDTASK))
-    if(storededitedTask) {
-      seteditedTask((prevItem) => {return {...prevItem, ...storededitedTask}})
+    const storedEditedTask = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_EDITEDTASK))
+    if(storedEditedTask) {
+      seteditedTask((prevItem) => {return {...prevItem, ...storedEditedTask}})
+    }
+    // Project Name
+    const storedProjectName = localStorage.getItem(LOCAL_STORAGE_KEY_PROJECTNAME)
+    if(storedProjectName) {
+      setProjectName((prevItem) => {return prevItem + storedProjectName})
     }
   }, [])
 
-  // useEffect to save todo list to local storage
+  /* ----- useEffect to Save Golbal State from Local Storage ----- */
+  // Todo List
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY_TODOLIST, JSON.stringify(todoList))
   }, [todoList])
-  // useEffect to save projects to local storage
+  // Projects
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY_PROJECTS, JSON.stringify(projects)) 
   }, [projects])
-  // useEffect to save edited task to local storage
+  // Edited Task
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY_EDITEDTASK, JSON.stringify(editedTask))
   }, [editedTask])
+   // Project Name
+   useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY_PROJECTNAME, projectName)
+  }, [projectName])
   
 
 
-  /* Functions */
+  /* ----- Functions ----- */
   // Determine the page to show on the Main Area
   function determineMainAreaPage() {
     let component
@@ -73,13 +90,22 @@ function App() {
                     todoList={todoList} setTodoList={setTodoList}
                     projectList={projects} setProjectList={setProjects}
                     editedTask={editedTask} seteditedTask={seteditedTask}
+                    fromPage={fromPage} setFromPage={setFromPage}
                     />
         break;
       case '/Today':
-        component = <TodayArea className='main-area-container' />
+        component = <TodayArea className='main-area-container' 
+                    todoList={todoList} setTodoList={setTodoList}
+                    />
         break;
       case '/Project':
-        component = <ProjectArea className='main-area-container' />
+        component = <ProjectArea className='main-area-container' 
+                    todoList={todoList} setTodoList={setTodoList}
+                    projectList={projects} setProjectList={setProjects}
+                    editedTask={editedTask} seteditedTask={seteditedTask}
+                    projectName={projectName} setProjectName={setProjectName}
+                    fromPage={fromPage} setFromPage={setFromPage}
+                    />
         break;
       case '/NewTask':
         component = <NewTask className='main-area-container' 
@@ -92,9 +118,7 @@ function App() {
                     todoList={todoList} setTodoList={setTodoList}
                     projectList={projects} setProjectList={setProjects}
                     editedTask={editedTask} seteditedTask={seteditedTask}
-                    LOCAL_STORAGE_KEY_TODOLIST={LOCAL_STORAGE_KEY_TODOLIST}
-                    LOCAL_STORAGE_KEY_PROJECTS={LOCAL_STORAGE_KEY_PROJECTS}
-                    LOCAL_STORAGE_KEY_editedTask={LOCAL_STORAGE_KEY_EDITEDTASK}
+                    fromPage={fromPage} setFromPage={setFromPage}
                     />
         break;
       default:
@@ -105,18 +129,19 @@ function App() {
 
 
 
-  // Debug
+  /* ----- Debug ----- */
   //todoList.map(element => console.log(element.name))
   //console.log(projects)
   //console.log(editedTask)
 
 
 
-
-  /* Return Content */
+  /* ----- Return Content ----- */
   return (
     <div className="container">
-      <LeftBarArea className='left-bar-container'/>
+      <LeftBarArea className='left-bar-container' 
+        projectList={projects} setProjectList={setProjects}
+        projectName={projectName} setProjectName={setProjectName}/>
       {determineMainAreaPage()}
     </div>
   )

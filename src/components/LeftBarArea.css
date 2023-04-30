@@ -1,4 +1,6 @@
 
+
+/* Container all */ 
 .left-bar-container {
     position: left;
     width: 100%;
@@ -13,10 +15,25 @@
     padding-bottom: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+}
+
+.left-bar-container > div:first-child {
+    margin-bottom: 20px;
+}
+
+.left-bar-container > div:last-child {
+    margin-top: auto;
+}
+
+a {
+    text-decoration: none;
+    /*color: black;*/
 }
 
 
+
+
+/* General Buttons */ 
 .general-pages > div {
     border: 1px solid black;
     margin-bottom: 10px;
@@ -27,11 +44,57 @@
     cursor: pointer;
 }
 
-a {
-    text-decoration: none;
+
+
+
+/* Project Buttons */
+.project-wrapper {
+    overflow-y: auto;
+}
+.project-wrapper > div:hover {
+    cursor: pointer;
 }
 
 
+.project-title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(130, 195, 241, 0.9);
+}
+.project-title-sign {
+    font-size: 25px;
+    font-weight: 1000;
+    margin-right: 10px;
+}
+
+
+.project-title-wrapper {
+    border: 1px solid black;
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding: 3px;
+}
+
+
+.project-element {
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+}
+.project-element-expand {
+    border: 1px solid black;
+    padding: 3px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+
+
+
+
+/* New Task Button */
 .new-task-page {
     position: bottom;
 }

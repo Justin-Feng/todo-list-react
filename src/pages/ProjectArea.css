@@ -1,0 +1,36 @@
+
+.project-container {
+    background: linear-gradient(to right bottom, rgba(20, 62, 90, 0.7), rgba(80, 150, 150, .5));
+    width: 100%;
+    height: 100vh;
+    padding: 50px;
+    padding-left: 100px;
+    display: inline-block;
+}
+
+
+.project-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.project-right-line {
+    background-color: rgb(63, 63, 64, .5);
+    height: 3px;
+    min-width: 30px;
+    width: 40%;
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.project-show-name {
+    margin-right: 30px;
+}
+
+.project-delete-button {
+    margin-top: 3px;
+    width: 100px;
+    height: 20px;
+}
