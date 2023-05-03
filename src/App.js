@@ -128,11 +128,9 @@ function App() {
   }
 
 
-
   /* ----- Debug ----- */
   //todoList.map(element => console.log(element.name))
   //console.log(projects)
-  //console.log(editedTask)
 
 
 
