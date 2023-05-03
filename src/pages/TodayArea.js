@@ -28,11 +28,11 @@ export default function TodayArea(todayProps) {
       <div className='today-title'>
         <div className='today-page-title'>Today</div>
         <div className='today-right-line'></div>
-        <p>Sort by : </p>
+        {/* <p>Sort by : </p>
         <select className='today-sort-selection'>
           <option>Priority</option>
           <option>Due Date</option>
-        </select>
+        </select> */}
       </div>
       {/* Today Content */}
       <div className='today-content'>

@@ -2,8 +2,7 @@
 import './Edit.css'
 // Libraries
 import React from 'react'
-import {useRef, useState, useEffect} from 'react'
-import {v4 as uuidv4} from 'uuid'
+import {useRef, useState} from 'react'
 import CreatableSelect from 'react-select/creatable';
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -66,11 +65,11 @@ export default function Edit(editProps) {
   // Handle Edit Task Button
   function handleEditTask(e) {
       // If any of the input is empty, popup an window
-      if(EditNameRef.current.value == "" || 
-         EditPriorityRef.current.value == "" || 
-         EditDescriptionRef.current.value == "" || 
-         EditProjectRef.current.getValue().length == 0 || 
-         EditDueDateRef.current.input.value == "") {
+      if(EditNameRef.current.value === "" || 
+         EditPriorityRef.current.value === "" || 
+         EditDescriptionRef.current.value === "" || 
+         EditProjectRef.current.getValue().length === 0 || 
+         EditDueDateRef.current.input.value === "") {
           alert("No field can be empty! Please check and edit the task again.")
           return
       }
@@ -106,7 +105,6 @@ export default function Edit(editProps) {
   const colourStyles = {
         control: styles => ({ ...styles, backgroundColor: '#ffffff80', height: '50px', }),
         option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-        const color = '#675750ad';
         return {
             ...styles,
             backgroundColor: isFocused ? '#6757507d' : '#67575038', 

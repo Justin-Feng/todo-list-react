@@ -146,7 +146,6 @@
     margin-bottom: 0.2rem;
 }
 .edit-input-middle-project-input {
-    height: 35%;
     width: 60%;
     border-radius: 5px;
     font-family: sans-serif;
@@ -184,7 +183,7 @@
 .edit-input-right-wrapper {
     display: flex;
     flex-direction: column-reverse;
-    align-items: start;
+    align-items: flex-start;
     align-content: center;
 }
 .edit-input-add-button {

@@ -31,7 +31,7 @@ export default function ProjectArea(projectProps) {
         <div className='project-page-title'>Project</div>
         <div className='project-right-line'></div>
         <p className='project-show-name'>{projectProps.projectName}</p>
-        <button className='project-delete-button' onClick={handleDeleteProject}>Delete Project</button>
+        <i className='project-delete-button fa-solid fa-delete-left' onClick={handleDeleteProject}> Delete Project</i>
       </div>
       {/* project Content */}
       <div className='project-content'>

@@ -3,6 +3,18 @@
 @import url('https://fonts.googleapis.com/css?family=Sigmar');
 
 
+::-webkit-scrollbar {
+    width: 10px;
+    background: transparent;
+ }
+
+ ::-webkit-scrollbar-thumb {
+    background: #57474078;
+    border-radius: 10px;
+}
+
+
+
 
 
 /* Container all */ 
@@ -57,6 +69,8 @@
 /* Project Buttons */
 .left-bar-project-wrapper {
     overflow-y: auto;
+    overflow-x: hidden;
+    white-space: nowrap;
 }
 .left-bar-project-wrapper > div:hover {
     cursor: pointer;

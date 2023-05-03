@@ -2,7 +2,7 @@
 import './NewTask.css'
 // Libraries
 import React from 'react'
-import {useRef, useState, useEffect} from 'react'
+import {useRef, useState} from 'react'
 import {v4 as uuidv4} from 'uuid'
 import CreatableSelect from 'react-select/creatable';
 import ReactDatePicker from 'react-datepicker'
@@ -37,14 +37,14 @@ export default function NewTask(newTaskProps) {
 
     // For Selection on Project
     const [isLoading, setIsLoading] = useState(false);
-    const [options, setOptions] = useState([]);
+    // const [options, setOptions] = useState([]);
     const [value, setValue] = useState();
     function handleCreateProject(inputValue) {
         setIsLoading(true);
         setTimeout(() => {
           const newOption = createOption(inputValue);
           setIsLoading(false);
-          setOptions((prev) => [...prev, newOption]);
+        //   setOptions((prev) => [...prev, newOption]);
           setValue(newOption);
         }, 1000);
         newTaskProps.setProjectList((prev) => {return [...prev, inputValue]})
@@ -58,11 +58,11 @@ export default function NewTask(newTaskProps) {
     // Handle Adding New Task Button
     function handleAddNewTask(e) {
         // If any of the input is empty, popup an window
-        if(newTaskNameRef.current.value == "" || 
-           newTaskPriorityRef.current.value == "" || 
-           newTaskDescriptionRef.current.value == "" || 
-           newTaskProjectRef.current.getValue().length == 0 || 
-           newTaskDueDateRef.current.input.value == "") {
+        if(newTaskNameRef.current.value === "" || 
+           newTaskPriorityRef.current.value === "" || 
+           newTaskDescriptionRef.current.value === "" || 
+           newTaskProjectRef.current.getValue().length === 0 || 
+           newTaskDueDateRef.current.input.value === "") {
             // javascript:window.open('','_blank','height=600,width=400')
             alert("No field can be empty! Please check and add the task again.")
             return
@@ -95,10 +95,9 @@ export default function NewTask(newTaskProps) {
     const colourStyles = {
         control: styles => ({ ...styles, backgroundColor: '#ffffff80', height: '50px', }),
         option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-          const color = '#675750ad';
           return {
             ...styles,
-            backgroundColor: isFocused ? '#6757507d' : '#67575038', 
+            backgroundColor: isFocused ? '#6757505d' : '#67575038', 
             color: 'black'
           };
         }
@@ -120,12 +119,12 @@ export default function NewTask(newTaskProps) {
                 {/* Name of the new task */}
                 <div className='new-task-input-left-name-wrapper'>
                     <div className='new-task-input-left-name-prompt'>Name</div>
-                    <input className='new-task-input-left-name-input' ref={newTaskNameRef} />
+                    <input className='new-task-input-left-name-input' ref={newTaskNameRef} placeholder='What is the name/title of this new task?'/>
                 </div>
                 <div className='new-task-input-left-description-wrapper'>
                     <div className='new-task-input-left-description-prompt'>Description</div>
                     {/* Description of the new task */}
-                    <textarea className='new-task-input-left-description-input' ref={newTaskDescriptionRef} />
+                    <textarea className='new-task-input-left-description-input' ref={newTaskDescriptionRef} placeholder="Let's add some description about this new task ... "/>
                 </div>
             </div>
             <div className='new-task-input-middle-wrapper'>
@@ -152,6 +151,7 @@ export default function NewTask(newTaskProps) {
                     options={projectListToOptions(projectListCopy)}
                     value={value}
                     styles={colourStyles}
+                    placeholder="Select ... or Type to Create Project"
                     />
                 </div>
                 <div className='new-task-input-middle-duedate-wrapper'>
@@ -160,7 +160,8 @@ export default function NewTask(newTaskProps) {
                     <ReactDatePicker className='new-task-input-middle-duedate-input' ref={newTaskDueDateRef}
                     selected={selectedDate} 
                     onChange={date => setSelectedDate(date)} 
-                />
+                    placeholderText='Pick a date ...'
+                    />
                 </div>
             </div>
             <div className='new-task-input-right-wrapper'>
