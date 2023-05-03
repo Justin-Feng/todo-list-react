@@ -30,10 +30,10 @@ export default function LeftBarArea(leftBarProps) {
       {/* General Buttons at the top */}
       <div className='left-bar-general-buttons'>
         <div className='left-bar-inbox'>
-          <a href="/"><div>Inbox</div></a>
+          <a href="/todo-list-react/"><div>Inbox</div></a>
         </div>
         <div className='left-bar-today'>
-          <a href="/Today"><div>Today</div></a>
+          <a href="/todo-list-react/Today"><div>Today</div></a>
         </div>
       </div>
       {/* Project Buttons */}
@@ -50,7 +50,7 @@ export default function LeftBarArea(leftBarProps) {
       {/* Add New Task Button at the bottom */}
       <div className='left-bar-new-task-wrapper'>
         <div className='left-bar-new-task'>
-            <a href="/NewTask"><i className='fa-solid fa-list-check'></i><div>ADD NEW</div></a>
+            <a href="/todo-list-react/NewTask"><i className='fa-solid fa-list-check'></i><div>ADD NEW</div></a>
         </div>
       </div>
     </div>
