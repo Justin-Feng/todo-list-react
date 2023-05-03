@@ -4,17 +4,22 @@ import TaskShowComp from '../components/TaskShowComp'
 
 export default function TodayArea(todayProps) {
 
-  
-  
   const now = new Date()
-  let todayString
-  if(now.getMonth()+1 < 10) {
-    todayString = ('0' + now.toLocaleString() + '').substring(0, 10)
+  let todayMonth = now.getMonth() + 1
+  let todayDay = now.getDate()
+  let todayYear = now.getYear() + 1900
+  let todayString = ''
+  if(todayMonth < 10) {
+    todayString += '0' + todayMonth + '/'
   } else {
-    todayString = ('' + now.toLocaleString() + '').substring(0, 10)
+    todayString += todayMonth + '/'
+  }
+  if(todayDay < 10) {
+    todayString += '0' + todayDay + '/' + todayYear
+  } else {
+    todayString += todayDay + '/' + todayYear
   }
   const filteredList = todayProps.todoList.filter(element => element.duedate === todayString)
-  
 
 
   return (

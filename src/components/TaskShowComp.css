@@ -1,16 +1,178 @@
 
 
+@import url('https://fonts.googleapis.com/css?family=Poppins|Nunito|Ubuntu');
 
-.task-show-comp-container-incomplete {
-    margin-bottom: 10px;
-    border: 1px solid black;
-    padding: 3px;
-    width: 100%;
-}
 
+/* Activable Box - First Layer */
+/* contains 3 boxes as grid */
+.task-show-comp-container-incomplete, 
 .task-show-comp-container-complete {
-    margin-bottom: 10px;
-    border: 1px solid rgba(128, 128, 128, 0.4);
-    padding: 3px;
+    display: grid;
+    grid-template-columns: 40% 20% 15%;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 100px;
+    padding-top: 10px;
+    padding-bottom: 20px;
     width: 100%;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    max-height: 140px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    transition: 0.8s;
 }
+.task-show-comp-container-incomplete:hover, 
+.task-show-comp-container-complete:hover {
+    cursor: pointer;
+    background-color: rgba(101, 101, 101, 0.2);
+}
+@media (min-width: 2000px) {
+    .task-show-comp-container-incomplete, 
+    .task-show-comp-container-complete {
+        width: 80%
+    }
+}
+.task-show-comp-container-expand-active {
+    max-height: 100vh;
+}
+
+
+
+/* Second Layer - First Box */
+/* contains 2 boxes as grid */
+/* contains name-wrap and description vertically */
+.task-show-comp-left-container {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto auto;
+    height: 100%;
+}
+
+.task-show-comp-task-description {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.task-show-comp-task-description {
+    font-family: Nunito, sans-serif;
+    padding-left: 15px;
+}
+
+
+/* Third Layer */
+/* contains 2 boxes as grid */
+/* contains complete icon and task name */
+.task-show-comp-left-top-container {
+    display: grid;
+    grid-template-columns: 15% 85%;
+    align-items: center;
+}
+
+.task-show-comp-left-top-button-complete {
+    width: 17px;
+    height: 17px;
+    margin: auto;
+}
+.task-show-comp-left-top-button-complete:hover {
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.25);
+    box-shadow: 0 0 30px 5px rgba(0,0,0,0.7);
+    color: rgba(0, 0, 0, 0.7);
+    transition: 0.3s;
+}
+
+.task-show-comp-task-name {
+    font-family: Poppins, sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    word-wrap: break-word;
+    text-decoration: underline;
+}
+.complete-name {
+    color: rgba(103, 97, 97, 0.7);
+    text-decoration: line-through;
+}
+
+
+
+
+/* Second Layer - Second Box */
+/* contains 3 boxes as grid */
+/* contains duedate, priority and project vertically */
+.task-show-comp-middle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-top: 20px;
+    gap: 10px;
+}
+.task-show-comp-middle-container:last-child {
+    margin-bottom: auto;
+}
+
+.task-show-comp-task-duedate, 
+.task-show-comp-task-priority, 
+.task-show-comp-task-project {
+    font-family: Ubuntu, sans-serif;
+}
+
+/* Third Layer */
+/* contains the icon and the duedate text */
+.task-show-comp-task-duedate-wrapper, 
+.task-show-comp-task-priority-wrapper, 
+.task-show-comp-task-project-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+}
+
+
+
+
+/* Second Layer - Third Box */
+/* contains 2 boxes as grid */
+/* contains the three buttons */
+.task-show-comp-right-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    
+}
+
+.task-show-comp-right-button-edit {
+    width: 19px;
+    height: 19px;
+    margin-top: 20px;
+    color: gray;
+}
+.task-show-comp-right-button-edit:hover {
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.25);
+    box-shadow: 0 0 30px 5px rgba(0,0,0,0.7);
+    color: rgba(0, 0, 0, 0.7);
+    transition: 0.3s;
+}
+
+.task-show-comp-right-button-remove {
+    width: 18px;
+    height: 18px;
+    margin-top: 20px;
+    color: gray;
+}
+.task-show-comp-right-button-remove:hover {
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.25);
+    box-shadow: 0 0 30px 5px rgba(0,0,0,0.7);
+    color: rgba(0, 0, 0, 0.7);
+    transition: 0.3s;
+}
+
+
+
+
+
+
+
+

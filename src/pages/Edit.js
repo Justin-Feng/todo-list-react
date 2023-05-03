@@ -100,6 +100,25 @@ export default function Edit(editProps) {
   }
 
 
+
+
+  // Style Variable for Creatable Select
+  const colourStyles = {
+        control: styles => ({ ...styles, backgroundColor: '#ffffff80', height: '50px', }),
+        option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+        const color = '#675750ad';
+        return {
+            ...styles,
+            backgroundColor: isFocused ? '#6757507d' : '#67575038', 
+            color: 'black'
+        };
+        }
+    };
+
+
+
+
+
   // Debug area
   // console.log(value? value: {label: editProps.editedTask.project, value: editProps.editedTask.project})
   
@@ -111,24 +130,35 @@ export default function Edit(editProps) {
           <div className='edit-title-text'>Edit Task</div>
           <div className='edit-title-right-line'></div>
         </div>
-        <div className='edit-wrapper'>
-          <div className='edit-first-line-wrapper'>
+        <div className='edit-input-wrapper'>
+          <div className='edit-input-left-wrapper'>
+            <div className='edit-input-left-name-wrapper'>
+              <div className='edit-input-left-name-prompt'>Name</div>
               {/* Name of the new task */}
-              <input className='edit-name-todo' ref={EditNameRef} defaultValue={editProps.editedTask.name}/>
+              <input className='edit-input-left-name-input' ref={EditNameRef} defaultValue={editProps.editedTask.name}/>
+            </div>
+            <div className='edit-input-left-description-wrapper'>
+              <div className='edit-input-left-description-prompt'>Description</div>
+              {/* Description of the new task */}
+              <textarea className='edit-input-left-description-input' ref={EditDescriptionRef} defaultValue={editProps.editedTask.description}/>
+            </div>
+          </div>
+          <div className='edit-input-middle-wrapper'>
+            <div className='edit-input-middle-priority-wrapper'>
+              <div className='edit-input-middle-priority-prompt'>Level of Priority</div>
               {/* Priority of the new task */}
-              {editProps.editedTask.priority && <select className='edit-priority-todo' ref={EditPriorityRef} defaultValue={editProps.editedTask.priority}>
+              {editProps.editedTask.priority && <select className='edit-input-middle-priority-input' ref={EditPriorityRef} defaultValue={editProps.editedTask.priority}>
                   <option key="Priority 1" value="Priority 1">Priority 1</option>
                   <option key="Priority 2" value="Priority 2">Priority 2</option>
                   <option key="Priority 3" value="Priority 3">Priority 3</option>
                   <option key="Priority 4" value="Priority 4">Priority 4</option>
                   <option key="Priority 5" value="Priority 5">Priority 5</option>
               </select>}
-          </div>
-          <div className='edit-second-line-wrapper'>
-              {/* Description of the new task */}
-              <input className='edit-description-todo' ref={EditDescriptionRef} defaultValue={editProps.editedTask.description}/>
+            </div>
+            <div className='edit-input-middle-project-wrapper'>
+              <div className='edit-input-middle-project-prompt'>Project</div>
               {/* Project of the new task */}
-              {editProps.editedTask.project && <CreatableSelect className='edit-project-todo' ref={EditProjectRef} // defaultValue={editProps.editedTask.project}
+              {editProps.editedTask.project && <CreatableSelect className='edit-input-middle-project-input' ref={EditProjectRef} // defaultValue={editProps.editedTask.project}
               isClearable
               isDisabled={isLoading}
               isLoading={isLoading}
@@ -136,17 +166,25 @@ export default function Edit(editProps) {
               onCreateOption={handleCreateProject}
               options={projectListToOptions(projectListCopy)}
               value={value? value: {label: editProps.editedTask.project, value: editProps.editedTask.project}}
+              styles={colourStyles}
               />}
-          </div>
-          <div className='edit-third-line-wrapper'>
+            </div>
+            <div className='edit-input-middle-duedate-wrapper'>
+              <div className='edit-input-middle-duedate-prompt'>Due Date</div>
               {/* Due Date of the new task */}
-              {editProps.editedTask.duedate && <DatePicker className='edit-duedate-todo' ref={EditDueDateRef} // defaultValue={Date.parse(editProps.editedTask.duedate)}
+              {editProps.editedTask.duedate && <DatePicker className='edit-input-middle-duedate-input' ref={EditDueDateRef} // defaultValue={Date.parse(editProps.editedTask.duedate)}
               selected={selectedDate? selectedDate: Date.parse(editProps.editedTask.duedate)} 
               onChange={date => setSelectedDate(date)} 
               />}
-              {/* Botton to confirm edit on the new task */}
-              <button className='confirm-edit-button' onClick={handleEditTask}>Edit Task</button>
+            </div>
           </div>
+          <div className='edit-input-right-wrapper'>
+            {/* Botton to confirm edit on the new task */}
+            <i className='edit-input-add-button fa-solid fa-pen-to-square' onClick={handleEditTask}>Edit Task</i>
+          </div>
+          {/* <div className='edit-first-line-wrapper'></div>
+          <div className='edit-second-line-wrapper'></div>
+          <div className='edit-third-line-wrapper'></div> */}
         </div>
       </div>
     )

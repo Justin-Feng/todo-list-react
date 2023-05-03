@@ -90,6 +90,21 @@ export default function NewTask(newTaskProps) {
     }
 
 
+
+    // Style Variable for Creatable Select
+    const colourStyles = {
+        control: styles => ({ ...styles, backgroundColor: '#ffffff80', height: '50px', }),
+        option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+          const color = '#675750ad';
+          return {
+            ...styles,
+            backgroundColor: isFocused ? '#6757507d' : '#67575038', 
+            color: 'black'
+          };
+        }
+    };
+
+
     // Debug area
     // console.log(newTaskProjectRef.current.getValue())
 
@@ -100,41 +115,57 @@ export default function NewTask(newTaskProps) {
             <div className='new-task-title-text'>New Task</div>
             <div className='new-task-title-right-line'></div>
           </div>
-          <div className='input-wrapper'>
-            <div className='input-first-line-wrapper'>
+          <div className='new-task-input-wrapper'>
+            <div className='new-task-input-left-wrapper'>
                 {/* Name of the new task */}
-                <input className='name-todo' ref={newTaskNameRef} />
-                {/* Priority of the new task */}
-                <select className='priority-todo' ref={newTaskPriorityRef}>
-                    <option>Priority 1</option>
-                    <option>Priority 2</option>
-                    <option>Priority 3</option>
-                    <option>Priority 4</option>
-                    <option>Priority 5</option>
-                </select>
+                <div className='new-task-input-left-name-wrapper'>
+                    <div className='new-task-input-left-name-prompt'>Name</div>
+                    <input className='new-task-input-left-name-input' ref={newTaskNameRef} />
+                </div>
+                <div className='new-task-input-left-description-wrapper'>
+                    <div className='new-task-input-left-description-prompt'>Description</div>
+                    {/* Description of the new task */}
+                    <textarea className='new-task-input-left-description-input' ref={newTaskDescriptionRef} />
+                </div>
             </div>
-            <div className='input-second-line-wrapper'>
-                {/* Description of the new task */}
-                <input className='description-todo' ref={newTaskDescriptionRef} />
-                {/* Project of the new task */}
-                <CreatableSelect className='project-todo' ref={newTaskProjectRef}
-                isClearable
-                isDisabled={isLoading}
-                isLoading={isLoading}
-                onChange={(newValue) => setValue(newValue)}
-                onCreateOption={handleCreateProject}
-                options={projectListToOptions(projectListCopy)}
-                value={value}
+            <div className='new-task-input-middle-wrapper'>
+                <div className='new-task-input-middle-priority-wrapper'>
+                    <div className='new-task-input-middle-priority-prompt'>Level of Priority</div>
+                    {/* Priority of the new task */}
+                    <select className='new-task-input-middle-priority-input' ref={newTaskPriorityRef}>
+                        <option>Priority 1</option>
+                        <option>Priority 2</option>
+                        <option>Priority 3</option>
+                        <option>Priority 4</option>
+                        <option>Priority 5</option>
+                    </select>
+                </div>
+                <div className='new-task-input-middle-project-wrapper'>
+                    <div className='new-task-input-middle-project-prompt'>Project</div>
+                    {/* Project of the new task */}
+                    <CreatableSelect className='new-task-input-middle-project-input' ref={newTaskProjectRef}
+                    isClearable
+                    isDisabled={isLoading}
+                    isLoading={isLoading}
+                    onChange={(newValue) => setValue(newValue)}
+                    onCreateOption={handleCreateProject}
+                    options={projectListToOptions(projectListCopy)}
+                    value={value}
+                    styles={colourStyles}
+                    />
+                </div>
+                <div className='new-task-input-middle-duedate-wrapper'>
+                    <div className='new-task-input-middle-duedate-prompt'>Due Date</div>
+                    {/* Due Date of the new task */}
+                    <ReactDatePicker className='new-task-input-middle-duedate-input' ref={newTaskDueDateRef}
+                    selected={selectedDate} 
+                    onChange={date => setSelectedDate(date)} 
                 />
+                </div>
             </div>
-            <div className='input-third-line-wrapper'>
-                {/* Due Date of the new task */}
-                <ReactDatePicker className='duedate-todo' ref={newTaskDueDateRef}
-                selected={selectedDate} 
-                onChange={date => setSelectedDate(date)} 
-                />
+            <div className='new-task-input-right-wrapper'>
                 {/* Botton to create the new task */}
-                <button className='create-new-task-button' onClick={handleAddNewTask}>Add Task</button>
+                <i className='new-task-input-add-button fa-solid fa-plus' onClick={handleAddNewTask}>Add Task</i>
             </div>
           </div>
         </div>

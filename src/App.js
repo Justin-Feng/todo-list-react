@@ -86,7 +86,7 @@ function App() {
     let component
     switch (window.location.pathname) {
       case '/':
-        component = <Inbox className='main-area-container' 
+        component = <Inbox className='app-main-area' 
                     todoList={todoList} setTodoList={setTodoList}
                     projectList={projects} setProjectList={setProjects}
                     editedTask={editedTask} seteditedTask={seteditedTask}
@@ -94,12 +94,12 @@ function App() {
                     />
         break;
       case '/Today':
-        component = <TodayArea className='main-area-container' 
+        component = <TodayArea className='app-main-area' 
                     todoList={todoList} setTodoList={setTodoList}
                     />
         break;
       case '/Project':
-        component = <ProjectArea className='main-area-container' 
+        component = <ProjectArea className='app-main-area' 
                     todoList={todoList} setTodoList={setTodoList}
                     projectList={projects} setProjectList={setProjects}
                     editedTask={editedTask} seteditedTask={seteditedTask}
@@ -108,13 +108,13 @@ function App() {
                     />
         break;
       case '/NewTask':
-        component = <NewTask className='main-area-container' 
+        component = <NewTask className='app-main-area' 
                     todoList={todoList} setTodoList={setTodoList}
                     projectList={projects} setProjectList={setProjects}
                     />
         break;
       case '/Edit':
-        component = <Edit className='main-area-container' 
+        component = <Edit className='app-main-area' 
                     todoList={todoList} setTodoList={setTodoList}
                     projectList={projects} setProjectList={setProjects}
                     editedTask={editedTask} seteditedTask={seteditedTask}
@@ -138,8 +138,8 @@ function App() {
 
   /* ----- Return Content ----- */
   return (
-    <div className="container">
-      <LeftBarArea className='left-bar-container' 
+    <div className="app-container">
+      <LeftBarArea className='app-left-bar' 
         projectList={projects} setProjectList={setProjects}
         projectName={projectName} setProjectName={setProjectName}/>
       {determineMainAreaPage()}
