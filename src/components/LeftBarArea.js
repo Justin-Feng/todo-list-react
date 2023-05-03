@@ -19,7 +19,7 @@ export default function LeftBarArea(leftBarProps) {
     // set the global state projectName
     leftBarProps.setProjectName(prev => e.target.innerText)
     // redirect the user to the project Page
-    window.location.pathname = '/Project'
+    window.location.pathname = '/todo-list-react/Project'
   }
 
 

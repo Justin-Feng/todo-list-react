@@ -93,7 +93,7 @@ export default function Edit(editProps) {
       EditProjectRef.current.setValue(null)
       EditDueDateRef.current.setSelected(null)
       // set the page back
-      window.location.pathname = '/'
+      window.location.pathname = '/todo-list-react/'
       // TODO: set the edit item back
 
   }

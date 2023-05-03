@@ -18,7 +18,7 @@ export default function TaskShowComp({elementProps, editedTask, seteditedTask, t
   // Function that handles when user clicks EDIT
   function handleEditClicked(e) {
     seteditedTask({...elementProps})
-    window.location.pathname = '/Edit'
+    window.location.pathname = '/todo-list-react/Edit'
   }
   // Function that handles when user clicks COMPLETE
   function handleCompleteClicked(e) {

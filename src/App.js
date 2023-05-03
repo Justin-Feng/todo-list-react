@@ -85,7 +85,7 @@ function App() {
   function determineMainAreaPage() {
     let component
     switch (window.location.pathname) {
-      case '/':
+      case '/todo-list-react/':
         component = <Inbox className='app-main-area' 
                     todoList={todoList} setTodoList={setTodoList}
                     projectList={projects} setProjectList={setProjects}
@@ -93,12 +93,12 @@ function App() {
                     fromPage={fromPage} setFromPage={setFromPage}
                     />
         break;
-      case '/Today':
+      case '/todo-list-react/Today':
         component = <TodayArea className='app-main-area' 
                     todoList={todoList} setTodoList={setTodoList}
                     />
         break;
-      case '/Project':
+      case '/todo-list-react/Project':
         component = <ProjectArea className='app-main-area' 
                     todoList={todoList} setTodoList={setTodoList}
                     projectList={projects} setProjectList={setProjects}
@@ -107,13 +107,13 @@ function App() {
                     fromPage={fromPage} setFromPage={setFromPage}
                     />
         break;
-      case '/NewTask':
+      case '/todo-list-react/NewTask':
         component = <NewTask className='app-main-area' 
                     todoList={todoList} setTodoList={setTodoList}
                     projectList={projects} setProjectList={setProjects}
                     />
         break;
-      case '/Edit':
+      case '/todo-list-react/Edit':
         component = <Edit className='app-main-area' 
                     todoList={todoList} setTodoList={setTodoList}
                     projectList={projects} setProjectList={setProjects}
