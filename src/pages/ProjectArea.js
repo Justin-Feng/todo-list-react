@@ -17,7 +17,7 @@ export default function ProjectArea(projectProps) {
       // Set the Global Variable Project Name as empty
       projectProps.setProjectName(prev => '')
       // Return the page to Index
-      window.location.pathname = '/todo-list-react/'
+      window.location.hash = '#/'
     }
     else {
       return

@@ -3,8 +3,8 @@ import React from 'react'
 import './TaskShowComp.css'
 import { useState } from 'react'
 // Font Awesome 5 Icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -13,12 +13,11 @@ export default function TaskShowComp({elementProps, editedTask, seteditedTask, t
 
   const [collaps, setCollaps] = useState('true')
 
-
   /* ----- Local Functions ----- */
   // Function that handles when user clicks EDIT
   function handleEditClicked(e) {
     seteditedTask({...elementProps})
-    window.location.pathname = '/todo-list-react/Edit'
+    window.location.hash = '#/Edit'
   }
   // Function that handles when user clicks COMPLETE
   function handleCompleteClicked(e) {

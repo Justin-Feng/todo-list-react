@@ -4,11 +4,15 @@ import './index.css';
 import App from './App';
 // Font Awesome 5
 import '@fortawesome/fontawesome-free/css/all.min.css';
+// React Router Dom
+import { HashRouter } from 'react-router-dom'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <HashRouter>
+      <App />
+    </HashRouter>
   </React.StrictMode>
 );
 

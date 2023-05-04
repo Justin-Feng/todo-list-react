@@ -8,8 +8,8 @@ import NewTask from './pages/NewTask';
 import Edit from './pages/Edit';
 // imports
 import './App.css';
-import {useRef, useState, useEffect} from 'react'
-import {v4 as uuidv4} from 'uuid'
+import { useState, useEffect} from 'react'
+import { Route, Routes } from 'react-router-dom'
 
 
 // Global variables
@@ -17,7 +17,7 @@ const LOCAL_STORAGE_KEY_TODOLIST = 'todoApp.todo'
 const LOCAL_STORAGE_KEY_PROJECTS = 'todoApp.projects'
 const LOCAL_STORAGE_KEY_EDITEDTASK = 'todoApp.editedtask'
 const LOCAL_STORAGE_KEY_PROJECTNAME = 'todoApp.projectname'
-const LOCAL_STORAGE_KEY_FROMPAGE = 'todoApp.frompage'
+// const LOCAL_STORAGE_KEY_FROMPAGE = 'todoApp.frompage'
 
 
 function App() {
@@ -82,56 +82,56 @@ function App() {
 
   /* ----- Functions ----- */
   // Determine the page to show on the Main Area
-  function determineMainAreaPage() {
-    let component
-    switch (window.location.pathname) {
-      case '/todo-list-react/':
-        component = <Inbox className='app-main-area' 
-                    todoList={todoList} setTodoList={setTodoList}
-                    projectList={projects} setProjectList={setProjects}
-                    editedTask={editedTask} seteditedTask={seteditedTask}
-                    fromPage={fromPage} setFromPage={setFromPage}
-                    />
-        break;
-      case '/todo-list-react/Today':
-        component = <TodayArea className='app-main-area' 
-                    todoList={todoList} setTodoList={setTodoList}
-                    />
-        break;
-      case '/todo-list-react/Project':
-        component = <ProjectArea className='app-main-area' 
-                    todoList={todoList} setTodoList={setTodoList}
-                    projectList={projects} setProjectList={setProjects}
-                    editedTask={editedTask} seteditedTask={seteditedTask}
-                    projectName={projectName} setProjectName={setProjectName}
-                    fromPage={fromPage} setFromPage={setFromPage}
-                    />
-        break;
-      case '/todo-list-react/NewTask':
-        component = <NewTask className='app-main-area' 
-                    todoList={todoList} setTodoList={setTodoList}
-                    projectList={projects} setProjectList={setProjects}
-                    />
-        break;
-      case '/todo-list-react/Edit':
-        component = <Edit className='app-main-area' 
-                    todoList={todoList} setTodoList={setTodoList}
-                    projectList={projects} setProjectList={setProjects}
-                    editedTask={editedTask} seteditedTask={seteditedTask}
-                    fromPage={fromPage} setFromPage={setFromPage}
-                    />
-        break;
-      default:
-        break;
-    }
-    return component
-  }
+  // function determineMainAreaPage() {
+  //   let component
+  //   switch (window.location.pathname) {
+  //     case '/':
+  //       component = <Inbox className='app-main-area' 
+  //                   todoList={todoList} setTodoList={setTodoList}
+  //                   projectList={projects} setProjectList={setProjects}
+  //                   editedTask={editedTask} seteditedTask={seteditedTask}
+  //                   fromPage={fromPage} setFromPage={setFromPage}
+  //                   />
+  //       break;
+  //     case '/Today':
+  //       component = <TodayArea className='app-main-area' 
+  //                   todoList={todoList} setTodoList={setTodoList}
+  //                   />
+  //       break;
+  //     case '/Project':
+  //       component = <ProjectArea className='app-main-area' 
+  //                   todoList={todoList} setTodoList={setTodoList}
+  //                   projectList={projects} setProjectList={setProjects}
+  //                   editedTask={editedTask} seteditedTask={seteditedTask}
+  //                   projectName={projectName} setProjectName={setProjectName}
+  //                   fromPage={fromPage} setFromPage={setFromPage}
+  //                   />
+  //       break;
+  //     case '/NewTask':
+  //       component = <NewTask className='app-main-area' 
+  //                   todoList={todoList} setTodoList={setTodoList}
+  //                   projectList={projects} setProjectList={setProjects}
+  //                   />
+  //       break;
+  //     case '/Edit':
+  //       component = <Edit className='app-main-area' 
+  //                   todoList={todoList} setTodoList={setTodoList}
+  //                   projectList={projects} setProjectList={setProjects}
+  //                   editedTask={editedTask} seteditedTask={seteditedTask}
+  //                   fromPage={fromPage} setFromPage={setFromPage}
+  //                   />
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  //   return component
+  // }
 
 
   /* ----- Debug ----- */
   //todoList.map(element => console.log(element.name))
   //console.log(projects)
-
+  // console.log(window.location)
 
 
   /* ----- Return Content ----- */
@@ -140,7 +140,37 @@ function App() {
       <LeftBarArea className='app-left-bar' 
         projectList={projects} setProjectList={setProjects}
         projectName={projectName} setProjectName={setProjectName}/>
-      {determineMainAreaPage()}
+      {/* {determineMainAreaPage()} */}
+      <Routes>
+        <Route path='/' element={<Inbox className='app-main-area' 
+                                        todoList={todoList} setTodoList={setTodoList}
+                                        projectList={projects} setProjectList={setProjects}
+                                        editedTask={editedTask} seteditedTask={seteditedTask}
+                                        fromPage={fromPage} setFromPage={setFromPage} />}></Route>
+        <Route path='/Today' element={<TodayArea className='app-main-area' 
+                                                  todoList={todoList} setTodoList={setTodoList}
+                                                  projectList={projects} setProjectList={setProjects}
+                                                  editedTask={editedTask} seteditedTask={seteditedTask}
+                                                  fromPage={fromPage} setFromPage={setFromPage}
+                                                  />}></Route>
+        <Route path='/Project' element={<ProjectArea className='app-main-area' 
+                                                      todoList={todoList} setTodoList={setTodoList}
+                                                      projectList={projects} setProjectList={setProjects}
+                                                      editedTask={editedTask} seteditedTask={seteditedTask}
+                                                      projectName={projectName} setProjectName={setProjectName}
+                                                      fromPage={fromPage} setFromPage={setFromPage}
+                                                      />}></Route>
+        <Route path='/NewTask' element={<NewTask className='app-main-area' 
+                                                  todoList={todoList} setTodoList={setTodoList}
+                                                  projectList={projects} setProjectList={setProjects}
+                                                  />}></Route>
+        <Route path='/Edit' element={<Edit className='app-main-area' 
+                                            todoList={todoList} setTodoList={setTodoList}
+                                            projectList={projects} setProjectList={setProjects}
+                                            editedTask={editedTask} seteditedTask={seteditedTask}
+                                            fromPage={fromPage} setFromPage={setFromPage}
+                                            />}></Route>
+      </Routes>
     </div>
   )
 }
